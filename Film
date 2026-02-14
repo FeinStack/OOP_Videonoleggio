@@ -1,0 +1,45 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package ca_oopvideonoleggio;
+
+/**
+ *
+ * @author andre
+ */
+public class Film {
+
+    String titolo;
+    String regista;
+    int anno;
+    boolean disponibile = true;
+
+    void noleggia() {
+        if (disponibile) {
+            disponibile = false;
+        }
+    }
+
+    void restituisci() {
+        if (!disponibile) {
+            disponibile = true;
+        }
+    }
+
+    void stampaInfo() {
+
+        if (disponibile) {
+            System.out.println("Titolo: " + titolo
+                    + "\nRegista: " + regista + "       --> DISPONIBILE"
+                    + "\nAnno: " + anno);
+        } else {
+            System.out.println("Titolo: " + titolo
+                    + "\nRegista: " + regista + "       --> NOLEGGIATO"
+                    + "\nAnno: " + anno);
+
+        }
+
+    }
+
+}
