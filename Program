@@ -1,0 +1,62 @@
+package ca_oopvideonoleggio;
+
+public class Program {
+
+    public static void main(String[] args) {
+        Videonoleggio movieRovereto = new Videonoleggio(3);
+
+        menu(movieRovereto);
+
+    }
+
+    static void menu(Videonoleggio videonoleggio) {
+        int risposta;
+        do {
+            System.out.println("""
+                           1. Aggiungi Film
+                           2. Mostra Film
+                           3. Noleggia Film
+                           4. Restituisci Film
+                           0. Esci
+                           """);
+
+            risposta = Input.gestioneInt();
+
+            switch (risposta) {
+
+                case 1:
+                    videonoleggio.aggiungiFilm(videonoleggio);
+
+                    break;
+
+                case 2:
+                    videonoleggio.mostraFilm();
+
+                    break;
+
+                case 3:
+                    System.out.println("Che Film Noleggiare?");
+                    videonoleggio.noleggiaFilm(Input.gestioneString());
+
+                    break;
+
+                case 4:
+                    System.out.println("Che Film Restituire?");
+                    videonoleggio.restituisciFilm(Input.gestioneString());
+
+                    break;
+
+                case 0:
+                    System.out.println("==== GESTIONE CONCLUSA ====");
+                    break;
+
+                default:
+                    System.out.println("=== SCELTA NON DISPONIBILE ===");
+                    break;
+
+            }
+        } while (risposta != 0);
+
+    }
+
+}
