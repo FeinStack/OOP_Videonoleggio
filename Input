@@ -1,0 +1,52 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package ca_oopvideonoleggio;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author andre
+ */
+public class Input {
+
+    private static Scanner sc = new Scanner(System.in);
+
+    public static int gestioneInt() {
+        int risposta = 0;
+        boolean valido;
+
+        do {
+            try {
+                risposta = sc.nextInt();
+                valido = true;
+                sc.nextLine();
+            } catch (Exception e) {
+                System.out.println("Input non valido!");
+                sc.nextLine();
+                valido = false;
+            }
+        } while (!valido);
+        return risposta;
+    }
+
+    public static String gestioneString() {
+        String risposta = "";
+        boolean valido;
+
+        do {
+            try {
+                risposta = sc.nextLine();
+                valido = true;
+            } catch (Exception e) {
+                System.out.println("Input non valido!");
+                sc.nextLine();
+                valido = false;
+            }
+        } while (!valido);
+        return risposta;
+    }
+
+}
