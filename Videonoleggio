@@ -1,0 +1,105 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package ca_oopvideonoleggio;
+
+/**
+ *
+ * @author andre
+ */
+public class Videonoleggio {
+
+    private Film[] listaFilm;
+
+    private int maxFilm;
+
+    private int conteggioFilm;
+
+    //MODELLO DEL NEGOZIO (potrei avere 10 negozi strutturati così)
+    public Videonoleggio(int maxFilm) {
+        this.maxFilm = maxFilm;
+
+        listaFilm = new Film[maxFilm];
+
+        conteggioFilm = 0;
+    }
+
+    void aggiungiFilm(Videonoleggio videonoleggio) {
+        Film f = new Film();
+
+        if (conteggioFilm < videonoleggio.maxFilm) {
+            System.out.println("Titolo Film: ");
+            f.titolo = Input.gestioneString();
+            System.out.println("Nome Regista: ");
+            f.regista = Input.gestioneString();
+            System.out.println("Anno Produzione: ");
+            f.anno = Input.gestioneInt();
+
+            System.out.println("FILM AGGIUNTO!");
+
+            listaFilm[conteggioFilm] = f;
+            conteggioFilm++;
+
+        } else {
+            System.out.println("LIMITE MASSIMO RAGGIUNTO!");
+        }
+
+    }
+
+    void mostraFilm() {
+        for (int i = 0; i < conteggioFilm; i++) {
+            System.out.println("====================");
+
+            listaFilm[i].stampaInfo();
+
+        }
+    }
+
+    void noleggiaFilm(String titoloFilm) {
+
+        for (int i = 0; i < conteggioFilm; i++) {
+            if (titoloFilm.equalsIgnoreCase(listaFilm[i].titolo)) {
+
+                //se E' disponibile, lo noleggiamo
+                if (listaFilm[i].disponibile) {
+                    System.out.println("\nNOLEGGIATO!\n");
+                    listaFilm[i].noleggia();
+                    return;
+
+                } else {
+                    System.out.println("Non disponibile!");
+                    return;
+                }
+
+            }
+
+        }
+
+        System.out.println("Film non trovato!");
+
+    }
+
+    void restituisciFilm(String titoloFilm) {
+        for (int i = 0; i < conteggioFilm; i++) {
+            if (titoloFilm.equalsIgnoreCase(listaFilm[i].titolo)) {
+
+                //se NON è disponibile, quindi è noleggiato, lo restituiamo
+                if (!listaFilm[i].disponibile) {
+                    listaFilm[i].restituisci();
+                    System.out.println("RESTITUITO! GRAZIE");
+                    return;
+
+                } else {
+                    System.out.println("Non e' stato noleggiato!");
+                    return;
+                }
+
+            }
+
+        }
+
+        System.out.println("Film non trovato!");
+    }
+
+}
